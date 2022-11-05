@@ -16,6 +16,10 @@ setup(
     author='Dmitriy Baranov',
     author_email='amareelez@gmail.com',
     license='MIT',
-    scripts=['run-clang-format.py'],
+    entry_points={
+        'console_scripts': [
+            'run-clang-format = pre_commit_run_clang_format:main',
+        ]
+    },
     install_requires=[f'clang-format=={get_version()}'],
 )

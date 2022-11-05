@@ -1,7 +1,7 @@
 - id: run-clang-format
   name: run-clang-format
   description: 'Runs run-clang-format wrapper of clang-format for better diff and exit codes handling'
-  entry: run-clang-format.py
+  entry: run-clang-format
   language: python
   types_or: [c++, c, c#, cuda, java, javascript, json, objective-c, proto]
   minimum_pre_commit_version: '2.9.0'
