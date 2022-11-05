@@ -30,7 +30,6 @@ try:
 except ImportError:
     DEVNULL = open(os.devnull, "wb")
 
-
 DEFAULT_EXTENSIONS = 'c,h,C,H,cpp,hpp,cc,hh,c++,h++,cxx,hxx'
 DEFAULT_CLANG_FORMAT_IGNORE = '.clang-format-ignore'
 
@@ -39,6 +38,7 @@ class ExitStatus:
     SUCCESS = 0
     DIFF = 1
     TROUBLE = 2
+
 
 def excludes_from_file(ignore_file):
     excludes = []
@@ -56,7 +56,8 @@ def excludes_from_file(ignore_file):
     except EnvironmentError as e:
         if e.errno != errno.ENOENT:
             raise
-    return excludes;
+    return excludes
+
 
 def list_files(files, recursive=False, extensions=None, exclude=None):
     if extensions is None:
@@ -130,7 +131,7 @@ def run_clang_format_diff(args, file):
             original = f.readlines()
     except IOError as exc:
         raise DiffError(str(exc))
-    
+
     if args.in_place:
         invocation = [args.clang_format_executable, '-i', file]
     else:
@@ -287,7 +288,7 @@ def main():
         type=int,
         default=0,
         help='run N clang-format jobs in parallel'
-        ' (default number of cpus + 1)')
+             ' (default number of cpus + 1)')
     parser.add_argument(
         '--color',
         default='auto',
@@ -300,7 +301,7 @@ def main():
         action='append',
         default=[],
         help='exclude paths matching the given glob-like pattern(s)'
-        ' from recursive search')
+             ' from recursive search')
     parser.add_argument(
         '--style',
         help='formatting style to apply (LLVM, Google, Chromium, Mozilla, WebKit)')
